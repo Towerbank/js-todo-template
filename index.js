@@ -25,12 +25,12 @@ function createListItem(task) {
   const newButton = document.createElement('button');
   newButton.classList.add('destroy');
   
-  newDiv.appendChild(newInput);
-  newDiv.appendChild(newLabel);
-  newDiv.appendChild(newButton);
-  newItem.appendChild(newDiv);
+  newDiv.append(newInput);
+  newDiv.append(newLabel);
+  newDiv.append(newButton);
+  newItem.append(newDiv);
   
-  todoList.appendChild(newItem);
+  todoList.append(newItem);
 };
   
 function renderTask() { 
