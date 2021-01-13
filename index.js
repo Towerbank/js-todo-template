@@ -1,11 +1,14 @@
 const todoList = document.querySelector('.todo-list');
 
-const task = {
-  id: "1",
-  text: "выучить html",
-  completed: true
-}
-
+const tasksList = [
+  { id: "1", text: "выучить html", completed: true },
+  { id: "2", text: "выучить css", completed: true },
+  { id: "3", text: "выучить js", completed: false },
+  { id: "4", text: "выучить фреймворк", completed: false },
+  { id: "5", text: "написать несколько учебных проектов", completed: false },
+  { id: "6", text: "пройти собеседование", completed: false },
+  { id: "7", text: "получить работу", completed: false }
+  ];
 
 function createListItem(task) {
 
@@ -14,7 +17,7 @@ function createListItem(task) {
   newItem.setAttribute('id', task.id)
   
   const newDiv = document.createElement('div');
-
+  
   const newInput = document.createElement('input');
   newInput.classList.add('toggle');
   newInput.setAttribute('type', 'checkbox');
@@ -34,9 +37,11 @@ function createListItem(task) {
   todoList.append(newItem);
 };
   
-function renderTask() { 
-  createListItem(task)
+function renderTasks() { 
+  for (let task of tasksList) {
+    createListItem(task);
+  }
 };
 
-renderTask(task)
+renderTasks(tasksList);
 
