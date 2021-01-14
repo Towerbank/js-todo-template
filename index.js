@@ -11,60 +11,62 @@ const tasksList = [
   { id: "7", text: "получить работу", completed: false }
   ];
 
-function createListItem(task) {
-
-  const newItem = document.createElement('li');
-  newItem.classList.add('editing');
-  newItem.setAttribute('id', task.id)
-  
-  const newDiv = document.createElement('div');
-  
-  const newInput = document.createElement('input');
-  newInput.classList.add('toggle');
-  newInput.setAttribute('type', 'checkbox');
-  newInput.checked = task.completed;
-  
-  const newLabel = document.createElement('label');
-  newLabel.innerHTML = task.text;
-  
-  const newButton = document.createElement('button');
-  newButton.classList.add('destroy');
-  
-  newDiv.append(newInput);
-  newDiv.append(newLabel);
-  newDiv.append(newButton);
-  newItem.append(newDiv);
-  
-  todoList.append(newItem);
-};
-  
-function renderTasks() { 
-  for (let task of tasksList) {
-    createListItem(task);
-  }
+  function createListItem(task) {
+    return `
+    <li class='editing' id = '${task.id}'>
+    <div>
+    <input class='toggle' type='checkbox' ${task.completed ? 'checked' : ''}>
+    <label>${task.text}</label>
+    <button class='destroy'></button>
+    </div>
+    </li>
+    `
 };
 
-renderTasks(tasksList);
-
-
-
-// function createListItem() {
-//     let createListItem = `
-//     <li class='editing' id = '${task.id}'>
-//     <div>
-//     <input class='toggle' type='radio'>
-//     <label>${task.text}</label>
-//     <button class='todo-count'></button>
-//     </div>
-//     </li>
-//     `
-//     todoList.innerHTML = createListItem;
-// };
-
-// function renderTask() { 
-
-//   createListItem();
+function renderTask() { 
+  todoList.innerHTML = '';
+  tasksList.forEach(function (item) {
+    printHTML = createListItem(item);
+    todoList.insertAdjacentHTML('beforeend', printHTML);
+  })
   
+};
+
+renderTask();
+
+
+
+// function createListItem(task) {
+
+//   const newItem = document.createElement('li');
+//   newItem.classList.add('editing');
+//   newItem.setAttribute('id', task.id)
+  
+//   const newDiv = document.createElement('div');
+  
+//   const newInput = document.createElement('input');
+//   newInput.classList.add('toggle');
+//   newInput.setAttribute('type', 'checkbox');
+//   newInput.checked = task.completed;
+  
+//   const newLabel = document.createElement('label');
+//   newLabel.innerHTML = task.text;
+  
+//   const newButton = document.createElement('button');
+//   newButton.classList.add('destroy');
+  
+//   newDiv.append(newInput);
+//   newDiv.append(newLabel);
+//   newDiv.append(newButton);
+//   newItem.append(newDiv);
+  
+//   todoList.append(newItem);
+// };
+  
+// function renderTasks() { 
+//   for (let task of tasksList) {
+//     createListItem(task);
+//   }
 // };
 
-// todoList.push(renderTask(task));
+// renderTasks(tasksList);
