@@ -4,7 +4,8 @@ const task = {
   id: "1",
   text: "выучить html",
   completed: true
-  };
+} 
+
 
 function createListItem(task) {
 
@@ -38,3 +39,4 @@ function renderTask() {
 };
 
 renderTask(task)
+
