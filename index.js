@@ -1,5 +1,6 @@
 const todoList = document.querySelector('.todo-list');
 
+
 const tasksList = [
   { id: "1", text: "выучить html", completed: true },
   { id: "2", text: "выучить css", completed: true },
