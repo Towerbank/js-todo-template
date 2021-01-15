@@ -1,5 +1,5 @@
 const todoList = document.querySelector('.todo-list');
-
+const input = document.querySelector('.new-todo');
 
 const tasksList = [
   { id: "1", text: "выучить html", completed: true },
@@ -45,4 +45,30 @@ function renderTasks() {
 };
 
 renderTasks(tasksList);
+
+
+input.addEventListener('keydown', function (e) {
+  if (e.keyCode === 13) {
+    if (input.value === '') { return }
+    createNewTask();
+  }
+});
+
+
+function getId() {
+  return document.querySelector('ul').children.length;
+};
+
+function createNewTask() {
+  let newTask = {
+    id: getId() + 1,
+    text: input.value,
+    completed: false
+  }
+createListItem(newTask);
+input.value = '';
+}
+
+
+
 
