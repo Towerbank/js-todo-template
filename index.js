@@ -46,14 +46,11 @@ function renderTasks() {
 
 renderTasks(tasksList);
 
-
 input.addEventListener('keydown', function (e) {
-  if (e.keyCode === 13) {
-    if (input.value === '') { return }
+  if (e.keyCode === 13 && input.value === '') {
     createNewTask();
   }
 });
-
 
 function getId() {
   return document.querySelector('ul').children.length;
@@ -65,10 +62,7 @@ function createNewTask() {
     text: input.value,
     completed: false
   }
+
 createListItem(newTask);
 input.value = '';
-}
-
-
-
-
+};
